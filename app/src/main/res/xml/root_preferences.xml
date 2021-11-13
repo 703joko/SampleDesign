@@ -1,0 +1,62 @@
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.android.settings.deviceinfo.firmwareversion.NadFirmwareView/>
+    <PreferenceCategory app:title="@string/messages_header">
+        <com.slav.house.preferences.GkPreference
+            android:key="a"
+            android:icon="@drawable/ic_gk_quicksettings"
+            android:title="@string/qs_settings"
+            android:summary="@string/qs_settings_summary" />
+        <com.slav.house.preferences.GkPreference
+            android:key="s"
+            android:icon="@drawable/ic_gk_themes"
+            android:title="@string/title_activity_settings"
+            android:summary="@string/lockscreen_items_summary" />
+        <com.slav.house.preferences.GkPreference
+            android:key="d"
+            android:icon="@drawable/ic_gk_button"
+            android:title="@string/title_activity_settings"
+            android:summary="@string/lockscreen_items_summary" />
+        <com.slav.house.preferences.GkPreference
+            android:key="f"
+            android:icon="@drawable/ic_gk_lockscreen"
+            android:title="@string/title_activity_settings"
+            android:summary="@string/lockscreen_items_summary" />
+        <com.slav.house.preferences.GkPreference
+            android:key="g"
+            android:icon="@drawable/avatar"
+            android:title="@string/title_activity_settings"
+            android:summary="@string/lockscreen_items_summary" />
+
+        <EditTextPreference
+            app:key="signature"
+            app:title="@string/signature_title"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="reply"
+            app:entries="@array/reply_entries"
+            app:entryValues="@array/reply_values"
+            app:key="reply"
+            app:title="@string/reply_title"
+            app:useSimpleSummaryProvider="true" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory app:title="@string/sync_header">
+
+        <SwitchPreferenceCompat
+            app:key="sync"
+            app:title="@string/sync_title" />
+
+        <SwitchPreferenceCompat
+            app:dependency="sync"
+            app:key="attachment"
+            app:summaryOff="@string/attachment_summary_off"
+            app:summaryOn="@string/attachment_summary_on"
+            app:title="@string/attachment_title" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

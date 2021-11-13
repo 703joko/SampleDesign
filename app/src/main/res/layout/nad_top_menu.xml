@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="?android:attr/listPreferredItemPaddingEnd"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/nad_top_bg"
+        android:backgroundTint="@color/teal_200"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/about"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
+            android:gravity="start|center"
+            android:padding="10dp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="58dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="6dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingEnd="4dp"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:backgroundTint="#5f00"
+                android:background="@drawable/nad_ava_bg">
+
+                <ImageView
+                    android:id="@+id/avatar"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:antialias="true"
+                    android:padding="4dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/avatar" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="start|center"
+                android:layout_gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="18dp"
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="Tentang Ponsel"
+                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textDirection="locale" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:gravity="top"
+                    android:layout_weight="1"
+                    android:id="@+id/device_name"
+                    android:text="unknown"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nad_wings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?android:attr/listPreferredItemHeightSmall"
+            android:gravity="start|center"
+            android:padding="10dp">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="58dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="6dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingEnd="4dp"
+                android:paddingStart="4dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:backgroundTint="#5f00"
+                android:background="@drawable/nad_ava_bg">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:antialias="true"
+                    android:padding="4dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/nad_wings" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start|center"
+                android:orientation="vertical"
+                android:paddingStart="18dp">
+
+                <TextView
+                    android:id="@+id/nad_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ellipsize="marquee"
+                    android:singleLine="true"
+                    android:text="Nusantara Wings"
+                    android:textAppearance="?android:attr/textAppearanceListItem"
+                    android:textDirection="locale" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="1dp"
+                    android:layout_weight="1"
+                    android:text="Costom your phone like a Boss"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="?android:attr/listPreferredItemPaddingStart"
+        android:layout_marginEnd="?android:attr/listPreferredItemPaddingEnd"
+        android:layout_marginBottom="15dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:layout_marginEnd="4dp"
+            android:padding="14dp"
+            android:id="@+id/wifi"
+            android:backgroundTint="#f00"
+            android:background="@drawable/nad_ava_bg"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:antialias="true"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:layout_weight="1"
+                android:src="@drawable/wifi" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:text="Jaringan &amp; Internet"
+                android:layout_gravity="center"
+                android:textColor="@color/white"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/battery"
+            android:layout_marginStart="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:padding="14dp"
+            android:backgroundTint="#f50"
+            android:background="@drawable/nad_ava_bg"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:antialias="true"
+                android:rotation="90"
+                android:scaleType="fitCenter"
+                android:src="@drawable/battery" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/battery_text"
+                android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>
