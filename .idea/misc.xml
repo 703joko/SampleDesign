@@ -6,6 +6,7 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.31145833333333334" />
         <entry key="app/src/main/res/drawable-v31/gk_logo.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable-v31/ic_gk_quicksettings.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/avatar.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/battery.xml" value="0.17447916666666666" />
         <entry key="app/src/main/res/drawable/bg.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/bg_0.xml" value="0.2994791666666667" />
@@ -16,6 +17,8 @@
         <entry key="app/src/main/res/drawable/bottom_sheet_background.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/github.xml" value="0.16510416666666666" />
         <entry key="app/src/main/res/drawable/gk_logo.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/ic_android_version.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/ic_build_number.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/ic_gk_button_dark.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/ic_gk_button_light.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/ic_gk_gesture_dark.xml" value="0.2994791666666667" />
@@ -30,6 +33,9 @@
         <entry key="app/src/main/res/drawable/ic_gk_quicksettings_dark.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/ic_gk_quicksettings_light.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/ic_gk_themes_dark.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/ic_maintainer.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/ic_nad_version.xml" value="0.2994791666666667" />
+        <entry key="app/src/main/res/drawable/instagram.xml" value="0.2994791666666667" />
         <entry key="app/src/main/res/drawable/nad_ava_bg.xml" value="0.17447916666666666" />
         <entry key="app/src/main/res/drawable/nad_firmware_bg.xml" value="0.16510416666666666" />
         <entry key="app/src/main/res/drawable/nad_round_top.xml" value="0.31302083333333336" />
@@ -43,7 +49,7 @@
         <entry key="app/src/main/res/layout/logo_genk_kapak.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/nad_firmware_view.xml" value="0.296875" />
         <entry key="app/src/main/res/layout/nad_top_menu.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/nad_version_dialog.xml" value="0.2833333333333333" />
+        <entry key="app/src/main/res/layout/nad_version_dialog.xml" value="0.2341485507246377" />
         <entry key="app/src/main/res/layout/settings_activity.xml" value="0.296875" />
         <entry key="app/src/main/res/layout/team_layout.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/team_recyclerview.xml" value="0.2833333333333333" />

@@ -31,8 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:alignmentMode="alignBounds"
-            android:columnCount="2"
-            android:rowCount="2"
+            android:columnCount="@integer/colFV"
+            android:rowCount="@integer/rowFV"
             android:rowOrderPreserved="false"
             android:useDefaultMargins="true">
 
@@ -109,7 +109,7 @@
                         android:layout_width="35.0dip"
                         android:layout_height="35.0dip"
                         android:paddingTop="5.0dip"
-                        android:src="@drawable/avatar" />
+                        android:src="@drawable/ic_nad_version" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -162,7 +162,7 @@
                         android:layout_width="35.0dip"
                         android:layout_height="35.0dip"
                         android:paddingTop="5.0dip"
-                        android:src="@drawable/avatar" />
+                        android:src="@drawable/ic_maintainer" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -220,7 +220,7 @@
                         android:layout_width="35.0dip"
                         android:layout_height="35.0dip"
                         android:paddingTop="5.0dip"
-                        android:src="@drawable/avatar" />
+                        android:src="@drawable/ic_build_number" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -254,7 +254,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="20.0dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/nad_round_top"
         android:backgroundTint="@color/white"
         android:gravity="bottom"

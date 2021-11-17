@@ -1,25 +1,35 @@
 package com.android.settings.deviceinfo.firmwareversion;
 
+import android.animation.Animator;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
+import android.net.Uri;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.example.preferencesettings.R;
 
 import java.util.Random;
-//import com.android.settingslib.DeviceInfoUtils;
 
 public class NadFirmwareView extends Preference {
 
@@ -67,6 +77,9 @@ public class NadFirmwareView extends Preference {
     public void onBindViewHolder(PreferenceViewHolder holder) {
         super.onBindViewHolder(holder);
 
+        int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
         final boolean selectable = false;
         final Context context = getContext();
         TextView androidVersion = holder.itemView.findViewById(context.getResources().
@@ -104,7 +117,12 @@ public class NadFirmwareView extends Preference {
             customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
             Window window = customDialog.getWindow();
             window.setGravity(Gravity.BOTTOM);
-            window.setLayout(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.FILL_PARENT);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            window.setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+            window.getDecorView().setSystemUiVisibility(uiOptions);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+            window.setDimAmount(0.7F);
+            window.setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             customDialog.setContentView(context.getResources().
                     getIdentifier("layout/nad_version_dialog", null, context.getPackageName()));
             TextView dialogBuildDate = customDialog.findViewById(context.getResources().
@@ -116,11 +134,103 @@ public class NadFirmwareView extends Preference {
             TextView dialogNadVer = customDialog.findViewById(context.getResources().
                     getIdentifier("id/dialog_nad_version", null, context.getPackageName()));
             dialogNadVer.setText(String.format("v%s", getSystemProperty("ro.nad.build.version")));
-            TextView dialogBuildType = customDialog.findViewById(context.getResources().
-                    getIdentifier("id/dialog_build_type", null, context.getPackageName()));
-            setInfo("ro.nad.build.type", dialogBuildType);
             customDialog.setCancelable(true);
+
+            ImageView mGithub = customDialog.findViewById(context.getResources().
+                    getIdentifier("id/goGithub", null, context.getPackageName()));
+            ImageView mTwitter = customDialog.findViewById(context.getResources().
+                    getIdentifier("id/goTwitter", null, context.getPackageName()));
+            ImageView mTelegram = customDialog.findViewById(context.getResources().
+                    getIdentifier("id/goTelegram", null, context.getPackageName()));
+            ImageView mInstagram = customDialog.findViewById(context.getResources().
+                    getIdentifier("id/goInstagram", null, context.getPackageName()));
+            ImageView mNusantara = customDialog.findViewById(context.getResources().
+                    getIdentifier("id/goNad", null, context.getPackageName()));
+
             customDialog.show();
+            mGithub.setOnClickListener(v1 -> {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://github.com/Nusantara-ROM"));
+                    context.startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
+            });
+            mTwitter.setOnClickListener(v1 -> {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://twitter.com/NusantaraROM"));
+                    context.startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
+            });
+            mTelegram.setOnClickListener(v1 -> {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://t.me/NusantaraCommunity"));
+                    context.startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
+            });
+            mInstagram.setOnClickListener(v1 -> {
+                try {
+                    Intent intent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://www.instagram.com/nusantararom/"));
+                    context.startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            mNusantara.setOnClickListener(v1 -> {
+                ValueAnimator anim = new ValueAnimator();
+                anim.setIntValues(Color.LTGRAY, Color.BLUE, Color.CYAN, Color.GREEN, Color.MAGENTA, Color.RED);
+                anim.setEvaluator(new ArgbEvaluator());
+                anim.addUpdateListener(valueAnimator -> mNusantara.setColorFilter((Integer) valueAnimator.getAnimatedValue()));
+                anim.addUpdateListener(valueAnimator -> mInstagram.setColorFilter((Integer) valueAnimator.getAnimatedValue()));
+                anim.addUpdateListener(valueAnimator -> mGithub.setColorFilter((Integer) valueAnimator.getAnimatedValue()));
+                anim.addUpdateListener(valueAnimator -> mTelegram.setColorFilter((Integer) valueAnimator.getAnimatedValue()));
+                anim.addUpdateListener(valueAnimator -> mTwitter.setColorFilter((Integer) valueAnimator.getAnimatedValue()));
+                anim.setDuration(5000);
+                anim.start();
+                anim.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animator) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animator) {
+                        try {
+                            Intent intent = new Intent(Intent.ACTION_VIEW,
+                                    Uri.parse("https://nusantararom.org/"));
+                            context.startActivity(intent);
+                        } catch (ActivityNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                        anim.cancel();
+                        mGithub.setColorFilter(null);
+                        mInstagram.setColorFilter(null);
+                        mTwitter.setColorFilter(null);
+                        mTelegram.setColorFilter(null);
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animator) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animator) {
+
+                    }
+
+
+                });
+            });
         });
 
 
@@ -138,13 +248,45 @@ public class NadFirmwareView extends Preference {
                 getIdentifier("id/l_build_number", null, context.getPackageName()));
         lbuildNumber.setClickable(true);
         lbuildNumber.setOnClickListener(v -> {
-            AlertDialog.Builder customDialog = new AlertDialog.Builder(getContext());
-            customDialog.setTitle("Build Number");
-            customDialog.setMessage(String.format(getSystemProperty("ro.system.build.id")));
+
+            // Custom Title
+            TextView mTitle = new TextView(context);
+            mTitle.setText("Build Number");
+            mTitle.setPadding(5, 35, 5, 10);
+            mTitle.setTextSize(26);
+            mTitle.setTypeface(Typeface.DEFAULT_BOLD);
+            mTitle.setGravity(Gravity.CENTER);
+
+            // Custom Message
+            TextView mMessage = new TextView(context);
+            mMessage.setText(String.format(getSystemProperty("ro.system.build.id")));
+            mMessage.setGravity(Gravity.CENTER);
+
+            AlertDialog.Builder customDialog = new AlertDialog.Builder(getContext(), R.style.CustomDialog);
+            customDialog.setCustomTitle(mTitle);
+            customDialog.setView(mMessage);
             customDialog.setIcon(context.getResources().
-                    getIdentifier("drawable/ic_a_build_number", null, context.getPackageName()));
+                    getIdentifier("drawable/ic_build_number", null, context.getPackageName()));
             AlertDialog alertDialog = customDialog.create();
             alertDialog.show();
+            alertDialog.getWindow().setGravity(Gravity.BOTTOM);
+            alertDialog.getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+            alertDialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+            alertDialog.getWindow().getDecorView().setSystemUiVisibility(uiOptions);
+            alertDialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+            alertDialog.getWindow().setDimAmount(0.7F);
+            alertDialog.getWindow().setLayout(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            alertDialog.getWindow().setBackgroundDrawableResource(R.drawable.bottom_sheet_background);
+
+            final Handler handler = new Handler();
+            final Runnable runnable = () -> {
+                if (alertDialog.isShowing()) {
+                    alertDialog.dismiss();
+                }
+            };
+            alertDialog.setOnDismissListener(dialog -> handler.removeCallbacks(runnable));
+
+            handler.postDelayed(runnable, 2000);
             buildNumber.setSelected(true);
         });
 

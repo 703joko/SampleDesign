@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2020 The Dirty Unicorns Project
+ * Copyright (C) 2021 Nusantara Android Development
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +20,11 @@ package com.nusantara.wings.fragments.team;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AbsListView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,14 +47,53 @@ public class TeamActivity extends Activity {
 
         initTeam();
 
+        int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
         Window window = getWindow();
         window.setGravity(Gravity.BOTTOM);
         window.setLayout(WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.WRAP_CONTENT);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        window.setFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
+        window.getDecorView().setSystemUiVisibility(uiOptions);
+        window.clearFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
     }
-    private void initTeam(){
-        RecyclerView mRecycleview = findViewById(R.id.listView);
 
+    private void initTeam() {
+        RecyclerView mRecycleview = findViewById(R.id.listView);
+        mRecycleview.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if (dy > 0) {
+                    // Scrolling up
+                    TextView tv = findViewById(R.id.title_dev);
+                    tv.setVisibility(View.GONE);
+                } else {
+                    // Scrolling down
+                }
+            }
+
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+
+                if (newState == AbsListView.OnScrollListener.SCROLL_STATE_FLING) {
+                    // Do something
+                    TextView tv = findViewById(R.id.title_dev);
+                    tv.setVisibility(View.VISIBLE);
+                } else if (newState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL) {
+                    // Do something
+                    TextView tv = findViewById(R.id.title_dev);
+                    //tv.setVisibility(View.GONE);
+                } else {
+                    // Do something
+                }
+            }
+        });
         setTeamMember("Muhammad Fikri", getString(R.string.developer_title)
                         + " / " + getString(R.string.maintainer_title), "Genkzsz11", "Genkzsz11",
                 R.drawable.alanndz);

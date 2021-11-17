@@ -2,6 +2,14 @@
 <resources>
     <style name="CustomDialog" parent="@android:style/Theme.Material.Dialog">
         <item name="android:windowAnimationStyle">@style/CustomDialogAnimation</item>
+        <!-- Fill the screen -->
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+
+        <!-- No backgrounds, titles or window float -->
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
     </style>
 
     <style name="CustomDialogAnimation">
@@ -9,4 +17,7 @@
         <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
     </style>
 
+    <style name="CollapsingToolbarTitle.Expanded" parent="@style/TextAppearance.Design.CollapsingToolbar.Expanded">
+        <item name="android:textSize">36dp</item>
+    </style>
 </resources>
